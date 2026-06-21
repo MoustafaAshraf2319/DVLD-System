@@ -96,6 +96,8 @@ namespace DVLD_Business
             return (PersonID != -1);
         }
 
+      
+
         private bool _UpdatePerson()
         {
             return clsPersonData.UpdatePersonInfo(this.PersonID, this.NationalNo, this.FirstName, this.SecondName, this.ThirdName,
@@ -113,9 +115,14 @@ namespace DVLD_Business
             return clsPersonData.GetAllPeople();
         }
 
-        public static DataTable SearchPeople(string ColumnName)
+        public static DataTable FilterPeople(string ColumnName)
         {
-            return clsPersonData.SearchPeople(ColumnName);
+            return clsPersonData.FilterPeople(ColumnName);
+        }
+
+        public static DataTable SearchPeople(string ColumnName, string SearchText)
+        {
+            return clsPersonData.SearchPeople(ColumnName, SearchText);
         }
 
         public static bool IsPersonExistsByNationalNo(string NationalNo)

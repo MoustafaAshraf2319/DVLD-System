@@ -12,9 +12,21 @@ namespace DVLD
 {
     public partial class frmPersonDetails : Form
     {
-        public frmPersonDetails()
+        private int _PersonID;
+        public frmPersonDetails(int PersonID)
         {
             InitializeComponent();
+            _PersonID = PersonID;
+        }
+
+        private void frmPersonDetails_Load(object sender, EventArgs e)
+        {
+            ctrlPersonDetails1.LoadPersonInfo(_PersonID);
+        }
+
+        private void ctrlPersonDetails1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

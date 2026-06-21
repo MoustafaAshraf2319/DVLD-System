@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.lblPersonID = new System.Windows.Forms.Label();
             this.lblAddEdit = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.ctrlAddEditPerson1 = new DVLD.ctrlAddEditPerson();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
@@ -44,16 +44,6 @@
             this.label1.Size = new System.Drawing.Size(120, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Person ID :";
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::DVLD.Properties.Resources.Number_32;
-            this.pictureBox3.Location = new System.Drawing.Point(194, 104);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(32, 32);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 17;
-            this.pictureBox3.TabStop = false;
             // 
             // lblPersonID
             // 
@@ -75,20 +65,30 @@
             this.lblAddEdit.TabIndex = 19;
             this.lblAddEdit.Text = "Add New Person";
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::DVLD.Properties.Resources.Number_32;
+            this.pictureBox3.Location = new System.Drawing.Point(194, 104);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 17;
+            this.pictureBox3.TabStop = false;
+            // 
             // ctrlAddEditPerson1
             // 
             this.ctrlAddEditPerson1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ctrlAddEditPerson1.Location = new System.Drawing.Point(13, 141);
-            this.ctrlAddEditPerson1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.ctrlAddEditPerson1.Margin = new System.Windows.Forms.Padding(5);
             this.ctrlAddEditPerson1.Name = "ctrlAddEditPerson1";
-            this.ctrlAddEditPerson1.Size = new System.Drawing.Size(1184, 445);
+            this.ctrlAddEditPerson1.Size = new System.Drawing.Size(1385, 536);
             this.ctrlAddEditPerson1.TabIndex = 20;
             // 
             // frmAddEditPerson
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1216, 597);
+            this.ClientSize = new System.Drawing.Size(1474, 714);
             this.Controls.Add(this.ctrlAddEditPerson1);
             this.Controls.Add(this.lblAddEdit);
             this.Controls.Add(this.lblPersonID);
@@ -98,6 +98,7 @@
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.Name = "frmAddEditPerson";
             this.Text = "frmAddEditPerson";
+            this.Load += new System.EventHandler(this.frmAddEditPerson_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

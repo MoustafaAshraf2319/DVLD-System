@@ -185,12 +185,40 @@ namespace DVLD_DataAccess
             finally { connection.Close(); }
             return (rowsAffected > 0);
         }
-        public static DataTable SearchPeople(string ColumnName)
+        public static DataTable FilterPeople(string ColumnName)
         {
             DataTable dt = new DataTable();
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
             string query = $"select * from People Order by {ColumnName} ASC";
             SqlCommand command = new SqlCommand(query, connection);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    dt.Load(reader);
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return dt;
+        }
+
+        public static DataTable SearchPeople(string ColumnName, string SearchText)
+        {
+            DataTable dt = new DataTable();
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = $"select * from People where {ColumnName} like @SearchText";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@SearchText", SearchText + "%");
             try
             {
                 connection.Open();
