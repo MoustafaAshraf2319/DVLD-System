@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DVLD.People;
 
 namespace DVLD
 {
@@ -15,12 +16,19 @@ namespace DVLD
         public frmMain()
         {
             InitializeComponent();
+            menuStrip1.BringToFront();
         }
 
         private void peopleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmManagePeople frmManagePeople = new frmManagePeople();
-            frmManagePeople.ShowDialog();
+            frmListPeople frmList = new frmListPeople();
+            frmList.ShowDialog();
+        }
+
+        private void localLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmFindPerson frmFindPerson = new frmFindPerson();
+            frmFindPerson.ShowDialog();
         }
     }
 }
