@@ -51,7 +51,7 @@
             this.gbFilters.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbFilters.Location = new System.Drawing.Point(10, 13);
             this.gbFilters.Name = "gbFilters";
-            this.gbFilters.Size = new System.Drawing.Size(819, 77);
+            this.gbFilters.Size = new System.Drawing.Size(1040, 77);
             this.gbFilters.TabIndex = 1;
             this.gbFilters.TabStop = false;
             this.gbFilters.Text = "Filter";
@@ -121,7 +121,7 @@
             this.ctrlPersonCard1.Location = new System.Drawing.Point(0, 101);
             this.ctrlPersonCard1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ctrlPersonCard1.Name = "ctrlPersonCard1";
-            this.ctrlPersonCard1.Size = new System.Drawing.Size(836, 299);
+            this.ctrlPersonCard1.Size = new System.Drawing.Size(1097, 333);
             this.ctrlPersonCard1.TabIndex = 0;
             // 
             // errorProvider1
@@ -135,7 +135,7 @@
             this.Controls.Add(this.gbFilters);
             this.Controls.Add(this.ctrlPersonCard1);
             this.Name = "ctrlPersonCardWithFilter";
-            this.Size = new System.Drawing.Size(837, 399);
+            this.Size = new System.Drawing.Size(1101, 456);
             this.Load += new System.EventHandler(this.ctrlPersonCardWithFilter_Load);
             this.gbFilters.ResumeLayout(false);
             this.gbFilters.PerformLayout();

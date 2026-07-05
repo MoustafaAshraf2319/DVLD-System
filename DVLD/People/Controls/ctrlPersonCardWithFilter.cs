@@ -72,11 +72,9 @@ namespace DVLD
 
         public void LoadPersonInfo(int PersonID)
         {
-
             cbFilterBy.SelectedIndex = 1;
             txtFilterValue.Text = PersonID.ToString();
             FindNow();
-
         }
 
         private void FindNow()
@@ -98,25 +96,8 @@ namespace DVLD
         private void ctrlPersonCardWithFilter_Load(object sender, EventArgs e)
         {
             cbFilterBy.SelectedIndex = 0;
-            txtFilterValue.Focus();
+            FilterFocus();
         }
-
-        private void btnAddNewPerson_Click(object sender, EventArgs e)
-        {
-            frmAddUpdatePerson frm1 = new frmAddUpdatePerson();
-            frm1.DataBack += DataBackEvent; // Subscribe to the event
-            frm1.ShowDialog();
-        }
-
-        private void DataBackEvent(object sender, int PersonID)
-        {
-            // Handle the data received
-
-            cbFilterBy.SelectedIndex = 1;
-            txtFilterValue.Text = PersonID.ToString();
-            ctrlPersonCard1.LoadPersonInfo(PersonID);
-        }
-
         private void txtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)13)
@@ -131,7 +112,7 @@ namespace DVLD
         private void cbFilterBy_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtFilterValue.Text = "";
-            txtFilterValue.Focus();
+            FilterFocus();
         }
 
         private void btnFind_Click(object sender, EventArgs e)
@@ -141,7 +122,6 @@ namespace DVLD
                 //Here we dont continue becuase the form is not valid
                 MessageBox.Show("Some fields are not valid!, put the mouse over the red icon(s) to see the error", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
-
             }
             FindNow();
         }
@@ -164,6 +144,20 @@ namespace DVLD
         public void FilterFocus()
         {
             txtFilterValue.Focus();
+        }
+
+        private void DataBackEvent(object sender, int PersonID)
+        {
+            // Handle the data received
+            cbFilterBy.SelectedIndex = 1;
+            txtFilterValue.Text = PersonID.ToString();
+            ctrlPersonCard1.LoadPersonInfo(PersonID);
+        }
+        private void btnAddNewPerson_Click(object sender, EventArgs e)
+        {
+            frmAddUpdatePerson frm1 = new frmAddUpdatePerson();
+            frm1.DataBack += DataBackEvent; // Subscribe to the event
+            frm1.ShowDialog();
         }
 
     }

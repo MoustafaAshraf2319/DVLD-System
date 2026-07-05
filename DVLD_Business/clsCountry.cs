@@ -31,7 +31,6 @@ namespace DVLD_Business
             string CountryName = "";
 
             if (clsCountryData.GetCountryInfoByID(ID, ref CountryName))
-
                 return new clsCountry(ID, CountryName);
             else
                 return null;

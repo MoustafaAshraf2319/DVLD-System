@@ -38,6 +38,54 @@ namespace DVLD
             InitializeComponent();
         }
 
+        private void _LoadPersonImage()
+        {
+            if (_Person.Gendor == 0)
+                pbPersonImage.Image = Resources.Male_512;
+            else
+                pbPersonImage.Image = Resources.Female_512;
+
+            string ImagePath = _Person.ImagePath;
+            if (ImagePath != null)
+                if (File.Exists(ImagePath))
+                    pbPersonImage.ImageLocation = ImagePath;
+                else
+                    MessageBox.Show("Could not find this image: = " + ImagePath, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void _FillPersonInfo()
+        {
+            llEditPersonInfo.Enabled = true;
+            _PersonID = _Person.PersonID;
+            lblPersonID.Text = _Person.PersonID.ToString();
+            lblFullName.Text = _Person.FullName;
+            lblNationalNo.Text = _Person.NationalNo;
+            lblGendor.Text = _Person.Gendor == 0 ? "Male" : "Female";
+            lblEmail.Text = _Person.Email;
+            lblAddress.Text = _Person.Address;
+            lblPhone.Text = _Person.Phone;
+            lblDateOfBirth.Text = _Person.DateOfBirth.ToShortDateString();
+            lblCountry.Text = clsCountry.Find(_Person.NationalityCountryID).CountryName;
+            
+            _LoadPersonImage();
+        }
+
+        public void ResetPersonInfo()
+        {
+            _PersonID = -1;
+            lblPersonID.Text = "[????]";
+            lblNationalNo.Text = "[????]";
+            lblFullName.Text = "[????]";
+            pbGendor.Image = Resources.Man_32;
+            lblGendor.Text = "[????]";
+            lblEmail.Text = "[????]";
+            lblPhone.Text = "[????]";
+            lblDateOfBirth.Text = "[????]";
+            lblCountry.Text = "[????]";
+            lblAddress.Text = "[????]";
+            pbPersonImage.Image = Resources.Male_512;
+        }
+
         public void LoadPersonInfo(int PersonID)
         {
             _Person = clsPerson.Find(PersonID);
@@ -64,63 +112,11 @@ namespace DVLD
             _FillPersonInfo();
         }
 
-        private void _LoadPersonImage()
-        {
-            if (_Person.Gendor == 0)
-                pbPersonImage.Image = Resources.Male_512;
-            else
-                pbPersonImage.Image = Resources.Female_512;
-
-            string ImagePath = _Person.ImagePath;
-            if (ImagePath != "")
-                if (File.Exists(ImagePath))
-                    pbPersonImage.ImageLocation = ImagePath;
-                else
-                    MessageBox.Show("Could not find this image: = " + ImagePath, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-        }
-
-        private void _FillPersonInfo()
-        {
-            llEditPersonInfo.Enabled = true;
-            _PersonID = _Person.PersonID;
-            lblPersonID.Text = _Person.PersonID.ToString();
-            lblNationalNo.Text = _Person.NationalNo;
-            lblFullName.Text = _Person.FullName;
-            lblGendor.Text = _Person.Gendor == 0 ? "Male" : "Female";
-            lblEmail.Text = _Person.Email;
-            lblPhone.Text = _Person.Phone;
-            lblDateOfBirth.Text = _Person.DateOfBirth.ToShortDateString();
-            lblCountry.Text = clsCountry.Find(_Person.NationalityCountryID).CountryName;
-            lblAddress.Text = _Person.Address;
-            _LoadPersonImage();
-        }
-
-        public void ResetPersonInfo()
-        {
-            _PersonID = -1;
-            lblPersonID.Text = "[????]";
-            lblNationalNo.Text = "[????]";
-            lblFullName.Text = "[????]";
-            pbGendor.Image = Resources.Man_32;
-            lblGendor.Text = "[????]";
-            lblEmail.Text = "[????]";
-            lblPhone.Text = "[????]";
-            lblDateOfBirth.Text = "[????]";
-            lblCountry.Text = "[????]";
-            lblAddress.Text = "[????]";
-            pbPersonImage.Image = Resources.Male_512;
-
-        }
-
-
         private void llEditPersonInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             frmAddUpdatePerson frmEdit = new frmAddUpdatePerson(_PersonID);
             frmEdit.ShowDialog();
             LoadPersonInfo(_PersonID);
         }
-
-
     }
 }
