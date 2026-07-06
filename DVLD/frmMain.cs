@@ -14,12 +14,11 @@ namespace DVLD
 {
     public partial class frmMain : Form
     {
-        private clsUser _LoginUser;
-        public frmMain(clsUser User)
+        frmLogin _frmLogin;
+        public frmMain(frmLogin frm)
         {
             InitializeComponent();
-            menuStrip1.BringToFront();
-            _LoginUser = User;
+            _frmLogin = frm;
         }
 
         private void peopleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -28,13 +27,10 @@ namespace DVLD
             frmList.ShowDialog();
         }
 
-        private void localLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        private void signOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
-        }
-
-        private void signUpToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+            clsGlobal.CurrentUser = null;
+            _frmLogin.Show();
             this.Close();
         }
 
@@ -46,14 +42,15 @@ namespace DVLD
 
         private void currentUserInfoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmUserInfo frm = new frmUserInfo(_LoginUser.UserID);
+            frmUserInfo frm = new frmUserInfo(clsGlobal.CurrentUser.UserID);
             frm.ShowDialog();
         }
 
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmChangePassword frm = new frmChangePassword(_LoginUser.UserID);
+            frmChangePassword frm = new frmChangePassword(clsGlobal.CurrentUser.UserID);
             frm.ShowDialog();
         }
+
     }
 }

@@ -14,29 +14,59 @@ namespace DVLD
 {
     public partial class frmLogin : Form
     {
-        private clsUser _User;
         public frmLogin()
         {
             InitializeComponent();          
         }
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            string Username = "", Password = "";
+            if(clsGlobal.GetStoredCredential(ref Username, ref Password))
+            {
+                txtUserName.Text = Username;
+                txtPassword.Text = Password;
+                chkRememberMe.Checked = true;
+            }
+            else
+                chkRememberMe.Checked = false;
+        }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            _User = clsUser.FindByUsernameAndPassword(txtUsername.Text, txtPassword.Text);
-            if (_User == null)
+            clsUser User = clsUser.FindByUsernameAndPassword(txtUserName.Text.Trim(), txtPassword.Text.Trim());
+            if(User != null)
             {
-                MessageBox.Show("Wrong Username or password !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return; 
-            }
+                if (chkRememberMe.Checked)
+                {
+                    clsGlobal.RememberUsernameAndPassword(txtUserName.Text.Trim(), txtPassword.Text.Trim());
+                }
+                else
+                {
+                    clsGlobal.RememberUsernameAndPassword("", "");
+                }
 
-            if (!_User.IsActive)
-            {
-                MessageBox.Show("User is not Active !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                if (!User.IsActive)
+                {
+                    txtUserName.Focus();
+                    MessageBox.Show("Your account is not Active, Contact Admin.", "In Active Account", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+               
+                clsGlobal.CurrentUser = User;
+                this.Hide();
+                frmMain frm = new frmMain(this);
+                frm.ShowDialog();
             }
-   
-            frmMain frm = new frmMain(_User);
-            frm.ShowDialog();
+            else
+            {
+                txtUserName.Focus();
+                MessageBox.Show("Invalid Username/Password.", "Wrong Credentials", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
