@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DVLD.Applications.Local_Driving_License;
+using DVLD.Drivers;
 using DVLD.People;
 using DVLD_Business;
 
@@ -52,5 +54,40 @@ namespace DVLD
             frm.ShowDialog();
         }
 
+        private void manageApplicationTypesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListApplicationTypes frm = new frmListApplicationTypes();
+            frm.ShowDialog();
+        }
+
+        private void manageTestTypesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListTestTypes frm = new frmListTestTypes();
+            frm.ShowDialog();
+        }
+
+        private void localLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAddUpdateLocalDrivingLicenseApplication frm = new frmAddUpdateLocalDrivingLicenseApplication();
+            frm.ShowDialog();
+        }
+
+        private void localDrivingLicenseApplicationsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListLocalDrivingLicenseApplications frm = new frmListLocalDrivingLicenseApplications();
+            frm.ShowDialog();
+        }
+
+        private void driversToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListDrivers frm = new frmListDrivers();
+            frm.ShowDialog();
+        }
+
+        private void retakeTestToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmListLocalDrivingLicenseApplications frm = new frmListLocalDrivingLicenseApplications();
+            frm.ShowDialog();
+        }
     }
 }

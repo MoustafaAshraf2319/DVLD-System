@@ -121,10 +121,10 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Image = global::DVLD.Properties.Resources.closeBlack32;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(557, 12);
+            this.btnClose.Location = new System.Drawing.Point(545, 12);
             this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(44, 37);
+            this.btnClose.Size = new System.Drawing.Size(56, 41);
             this.btnClose.TabIndex = 139;
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -159,10 +159,10 @@
             this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.Image = global::DVLD.Properties.Resources.sign_in_32;
             this.btnLogin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogin.Location = new System.Drawing.Point(333, 314);
+            this.btnLogin.Location = new System.Drawing.Point(307, 314);
             this.btnLogin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(126, 37);
+            this.btnLogin.Size = new System.Drawing.Size(152, 37);
             this.btnLogin.TabIndex = 138;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;

@@ -56,6 +56,7 @@ namespace DVLD
                 this.Hide();
                 frmMain frm = new frmMain(this);
                 frm.ShowDialog();
+                this.Show();
             }
             else
             {

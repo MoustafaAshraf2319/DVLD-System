@@ -50,7 +50,7 @@ namespace DVLD
                 if (File.Exists(ImagePath))
                     pbPersonImage.ImageLocation = ImagePath;
                 else
-                    MessageBox.Show("Could not find this image: = " + ImagePath, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
         }
 
         private void _FillPersonInfo()

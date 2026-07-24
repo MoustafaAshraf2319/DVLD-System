@@ -25,7 +25,6 @@ namespace DVLD
             }
         }
 
-
         private bool _ShowAddPerson = true;
         public bool ShowAddPerson
         {
@@ -98,6 +97,7 @@ namespace DVLD
             cbFilterBy.SelectedIndex = 0;
             FilterFocus();
         }
+
         private void txtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)13)
@@ -119,7 +119,6 @@ namespace DVLD
         {
             if (!this.ValidateChildren())
             {
-                //Here we dont continue becuase the form is not valid
                 MessageBox.Show("Some fields are not valid!, put the mouse over the red icon(s) to see the error", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -156,7 +155,7 @@ namespace DVLD
         private void btnAddNewPerson_Click(object sender, EventArgs e)
         {
             frmAddUpdatePerson frm1 = new frmAddUpdatePerson();
-            frm1.DataBack += DataBackEvent; // Subscribe to the event
+            frm1.DataBack += DataBackEvent; 
             frm1.ShowDialog();
         }
 
