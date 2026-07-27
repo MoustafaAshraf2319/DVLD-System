@@ -345,28 +345,23 @@ namespace DVLD_DataAccess
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = @"UPDATE Licenses
-                           SET 
-                              IsActive = 0
-                             
+                           SET  IsActive = 0                             
                          WHERE LicenseID=@LicenseID";
 
             SqlCommand command = new SqlCommand(query, connection);
 
             command.Parameters.AddWithValue("@LicenseID", LicenseID);
 
-
             try
             {
                 connection.Open();
                 rowsAffected = command.ExecuteNonQuery();
-
             }
             catch (Exception ex)
             {
                 //Console.WriteLine("Error: " + ex.Message);
                 return false;
             }
-
             finally
             {
                 connection.Close();
@@ -374,6 +369,5 @@ namespace DVLD_DataAccess
 
             return (rowsAffected > 0);
         }
-
     }
 }

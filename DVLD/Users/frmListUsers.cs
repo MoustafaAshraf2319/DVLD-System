@@ -141,6 +141,7 @@ namespace DVLD
                 e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
+
         private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmUserInfo frm = new frmUserInfo((int)dgvUsers.CurrentRow.Cells[0].Value);

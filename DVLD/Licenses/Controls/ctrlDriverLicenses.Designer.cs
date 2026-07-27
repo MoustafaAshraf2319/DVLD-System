@@ -100,6 +100,7 @@
             this.dgvLocalLicensesHistory.AllowUserToOrderColumns = true;
             this.dgvLocalLicensesHistory.BackgroundColor = System.Drawing.Color.White;
             this.dgvLocalLicensesHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLocalLicensesHistory.ContextMenuStrip = this.cmsLocal;
             this.dgvLocalLicensesHistory.Location = new System.Drawing.Point(5, 25);
             this.dgvLocalLicensesHistory.Margin = new System.Windows.Forms.Padding(2);
             this.dgvLocalLicensesHistory.Name = "dgvLocalLicensesHistory";
@@ -163,6 +164,7 @@
             this.dgvInternationalLicensesHistory.AllowUserToOrderColumns = true;
             this.dgvInternationalLicensesHistory.BackgroundColor = System.Drawing.Color.White;
             this.dgvInternationalLicensesHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvInternationalLicensesHistory.ContextMenuStrip = this.cmsInternational;
             this.dgvInternationalLicensesHistory.Location = new System.Drawing.Point(5, 25);
             this.dgvInternationalLicensesHistory.Margin = new System.Windows.Forms.Padding(2);
             this.dgvInternationalLicensesHistory.Name = "dgvInternationalLicensesHistory";
@@ -226,13 +228,13 @@
             this.cmsInternational.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.showLicenseInfoToolStripMenuItem1});
             this.cmsInternational.Name = "contextMenuStrip1";
-            this.cmsInternational.Size = new System.Drawing.Size(215, 58);
+            this.cmsInternational.Size = new System.Drawing.Size(201, 30);
             // 
             // showLicenseInfoToolStripMenuItem1
             // 
             this.showLicenseInfoToolStripMenuItem1.Image = global::DVLD.Properties.Resources.License_View_32;
             this.showLicenseInfoToolStripMenuItem1.Name = "showLicenseInfoToolStripMenuItem1";
-            this.showLicenseInfoToolStripMenuItem1.Size = new System.Drawing.Size(214, 26);
+            this.showLicenseInfoToolStripMenuItem1.Size = new System.Drawing.Size(200, 26);
             this.showLicenseInfoToolStripMenuItem1.Text = "Show License Info";
             this.showLicenseInfoToolStripMenuItem1.Click += new System.EventHandler(this.showInternationalLicenseInfoToolStripMenuItem1_Click);
             // 

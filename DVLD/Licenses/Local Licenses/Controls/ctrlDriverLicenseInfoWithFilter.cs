@@ -66,6 +66,7 @@ namespace DVLD.Licenses.Local_Licenses.Controls
             txtLicenseID.Text = LicenseID.ToString();
             ctrlDriverLicenseInfo1.LoadDriverLicenseInfo(LicenseID);
             _LicenseID = ctrlDriverLicenseInfo1.LicenseID;
+
             if (OnLicenseSelected != null && FilterEnabled)
                 OnLicenseSelected(_LicenseID);
         }

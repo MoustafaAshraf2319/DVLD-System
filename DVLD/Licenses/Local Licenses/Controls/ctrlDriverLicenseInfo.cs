@@ -52,6 +52,13 @@ namespace DVLD.Licenses.Local_Licenses.Controls
         {
             _LicenseID = LicenseID;
             _License = clsLicense.Find(_LicenseID);
+
+            if(_License == null)
+            {
+                MessageBox.Show("Couldn't Find License", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             lblClass.Text = _License.LicenseClassInfo.ClassName;
             lblFullName.Text = _License.DriverInfo.PersonInfo.FullName;
             lblLicenseID.Text = _License.LicenseID.ToString();

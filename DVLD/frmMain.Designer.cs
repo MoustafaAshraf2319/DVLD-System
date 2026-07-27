@@ -136,6 +136,7 @@
             this.internationalLicenseToolStripMenuItem.Name = "internationalLicenseToolStripMenuItem";
             this.internationalLicenseToolStripMenuItem.Size = new System.Drawing.Size(296, 32);
             this.internationalLicenseToolStripMenuItem.Text = "&International License";
+            this.internationalLicenseToolStripMenuItem.Click += new System.EventHandler(this.internationalLicenseToolStripMenuItem_Click);
             // 
             // renewDrivingLicenToolStripMenuItem
             // 
@@ -143,6 +144,7 @@
             this.renewDrivingLicenToolStripMenuItem.Name = "renewDrivingLicenToolStripMenuItem";
             this.renewDrivingLicenToolStripMenuItem.Size = new System.Drawing.Size(603, 54);
             this.renewDrivingLicenToolStripMenuItem.Text = "Renew Driving License";
+            this.renewDrivingLicenToolStripMenuItem.Click += new System.EventHandler(this.renewDrivingLicenToolStripMenuItem_Click);
             // 
             // replacementForLostOrDamagedLicenseToolStripMenuItem
             // 
@@ -155,6 +157,7 @@
             this.releaseDetainedDrivingLicenseToolStripMenuItem.Name = "releaseDetainedDrivingLicenseToolStripMenuItem";
             this.releaseDetainedDrivingLicenseToolStripMenuItem.Size = new System.Drawing.Size(603, 54);
             this.releaseDetainedDrivingLicenseToolStripMenuItem.Text = "Replacement for Lost or &Damaged LicenseRelease ";
+            this.releaseDetainedDrivingLicenseToolStripMenuItem.Click += new System.EventHandler(this.releaseDetainedDrivingLicenseToolStripMenuItem_Click);
             // 
             // retakeTestToolStripMenuItem
             // 
@@ -206,6 +209,7 @@
             this.internationalLicenseApplicationsToolStripMenuItem.Name = "internationalLicenseApplicationsToolStripMenuItem";
             this.internationalLicenseApplicationsToolStripMenuItem.Size = new System.Drawing.Size(422, 32);
             this.internationalLicenseApplicationsToolStripMenuItem.Text = "International License Applications";
+            this.internationalLicenseApplicationsToolStripMenuItem.Click += new System.EventHandler(this.internationalLicenseApplicationsToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -228,21 +232,22 @@
             // 
             this.manageDetainedLicensesToolStripMenuItem.Image = global::DVLD.Properties.Resources.Detain_32;
             this.manageDetainedLicensesToolStripMenuItem.Name = "manageDetainedLicensesToolStripMenuItem";
-            this.manageDetainedLicensesToolStripMenuItem.Size = new System.Drawing.Size(350, 32);
+            this.manageDetainedLicensesToolStripMenuItem.Size = new System.Drawing.Size(378, 54);
             this.manageDetainedLicensesToolStripMenuItem.Text = "Manage Detained Licenses";
             // 
             // detainLicenseToolStripMenuItem
             // 
             this.detainLicenseToolStripMenuItem.Image = global::DVLD.Properties.Resources.Detain_32;
             this.detainLicenseToolStripMenuItem.Name = "detainLicenseToolStripMenuItem";
-            this.detainLicenseToolStripMenuItem.Size = new System.Drawing.Size(350, 32);
+            this.detainLicenseToolStripMenuItem.Size = new System.Drawing.Size(378, 54);
             this.detainLicenseToolStripMenuItem.Text = "Detain License";
+            this.detainLicenseToolStripMenuItem.Click += new System.EventHandler(this.detainLicenseToolStripMenuItem_Click);
             // 
             // releaseDetainedLicenseToolStripMenuItem
             // 
             this.releaseDetainedLicenseToolStripMenuItem.Image = global::DVLD.Properties.Resources.Release_Detained_License_32;
             this.releaseDetainedLicenseToolStripMenuItem.Name = "releaseDetainedLicenseToolStripMenuItem";
-            this.releaseDetainedLicenseToolStripMenuItem.Size = new System.Drawing.Size(350, 32);
+            this.releaseDetainedLicenseToolStripMenuItem.Size = new System.Drawing.Size(378, 54);
             this.releaseDetainedLicenseToolStripMenuItem.Text = "Release Detained License";
             // 
             // manageApplicationTypesToolStripMenuItem

@@ -10,7 +10,6 @@ namespace DVLD_Buisness
 {
     public class clsLicense
     {
-
         public enum enMode { AddNew = 0, Update = 1 };
         public enMode Mode = enMode.AddNew;
 
@@ -21,6 +20,7 @@ namespace DVLD_Buisness
         public int ApplicationID { set; get; }
         public int DriverID { set; get; }
         public int LicenseClass { set; get; }
+
         public clsLicenseClass LicenseClassInfo;
         public DateTime IssueDate { set; get; }
         public DateTime ExpirationDate { set; get; }
@@ -84,8 +84,6 @@ namespace DVLD_Buisness
 
         private bool _AddNewLicense()
         {
-            //call DataAccess Layer 
-
             this.LicenseID = clsLicenseData.AddNewLicense(this.ApplicationID, this.DriverID, this.LicenseClass,
                this.IssueDate, this.ExpirationDate, this.Notes, this.PaidFees,
                this.IsActive, (byte)this.IssueReason, this.CreatedByUserID);
@@ -96,8 +94,6 @@ namespace DVLD_Buisness
 
         private bool _UpdateLicense()
         {
-            //call DataAccess Layer 
-
             return clsLicenseData.UpdateLicense(this.ApplicationID, this.LicenseID, this.DriverID, this.LicenseClass,
                this.IssueDate, this.ExpirationDate, this.Notes, this.PaidFees,
                this.IsActive, (byte)this.IssueReason, this.CreatedByUserID);
@@ -111,11 +107,9 @@ namespace DVLD_Buisness
             float PaidFees = 0; bool IsActive = true; int CreatedByUserID = 1;
             byte IssueReason = 1;
             if (clsLicenseData.GetLicenseInfoByID(LicenseID, ref ApplicationID, ref DriverID, ref LicenseClass,
-            ref IssueDate, ref ExpirationDate, ref Notes,
-            ref PaidFees, ref IsActive, ref IssueReason, ref CreatedByUserID))
+            ref IssueDate, ref ExpirationDate, ref Notes, ref PaidFees, ref IsActive, ref IssueReason, ref CreatedByUserID))
 
-                return new clsLicense(LicenseID, ApplicationID, DriverID, LicenseClass,
-                                     IssueDate, ExpirationDate, Notes,
+                return new clsLicense(LicenseID, ApplicationID, DriverID, LicenseClass, IssueDate, ExpirationDate, Notes,
                                      PaidFees, IsActive, (enIssueReason)IssueReason, CreatedByUserID);
             else
                 return null;
@@ -203,7 +197,6 @@ namespace DVLD_Buisness
 
             if (!detainedLicense.Save())
             {
-
                 return -1;
             }
             return detainedLicense.DetainID;
@@ -211,8 +204,7 @@ namespace DVLD_Buisness
 
         public bool ReleaseDetainedLicense(int ReleasedByUserID, ref int ApplicationID)
         {
-
-            //First Create Applicaiton 
+            //First Create Application 
             clsApplication Application = new clsApplication();
 
             Application.ApplicantPersonID = this.DriverInfo.PersonID;
@@ -231,15 +223,12 @@ namespace DVLD_Buisness
 
             ApplicationID = Application.ApplicationID;
 
-
             return this.DetainedInfo.ReleaseDetainedLicense(ReleasedByUserID, Application.ApplicationID);
-
         }
 
         public clsLicense RenewLicense(string Notes, int CreatedByUserID)
         {
-
-            //First Create Applicaiton 
+            //First Create Application 
             clsApplication Application = new clsApplication();
 
             Application.ApplicantPersonID = this.DriverInfo.PersonID;
@@ -285,9 +274,7 @@ namespace DVLD_Buisness
 
         public clsLicense Replace(enIssueReason IssueReason, int CreatedByUserID)
         {
-
-
-            //First Create Applicaiton 
+            //First Create Application 
             clsApplication Application = new clsApplication();
 
             Application.ApplicantPersonID = this.DriverInfo.PersonID;
@@ -319,8 +306,6 @@ namespace DVLD_Buisness
             NewLicense.IsActive = true;
             NewLicense.IssueReason = IssueReason;
             NewLicense.CreatedByUserID = CreatedByUserID;
-
-
 
             if (!NewLicense.Save())
             {

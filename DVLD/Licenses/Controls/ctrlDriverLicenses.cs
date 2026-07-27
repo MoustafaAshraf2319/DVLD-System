@@ -117,6 +117,7 @@ namespace DVLD.Licenses.Controls
         public void Clear()
         {
             _dtDriverLocalLicenses.Clear();
+            _dtDriverInternationalLicenses.Clear();
         }
 
         private void showLocalLicenseInfoToolStripMenuItem_Click(object sender, EventArgs e)

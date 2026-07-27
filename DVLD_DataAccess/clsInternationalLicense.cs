@@ -15,10 +15,9 @@ namespace DVLD_DataAccess
     public class clsInternationalLicenseData
     {
 
-        public static bool GetInternationalLicenseInfoByID(int InternationalLicenseID,
-            ref int ApplicationID,
-            ref int DriverID, ref int IssuedUsingLocalLicenseID,
-            ref DateTime IssueDate, ref DateTime ExpirationDate, ref bool IsActive, ref int CreatedByUserID)
+        public static bool GetInternationalLicenseInfoByID(int InternationalLicenseID, ref int ApplicationID, ref int DriverID,
+            ref int IssuedUsingLocalLicenseID, ref DateTime IssueDate, ref DateTime ExpirationDate, ref bool IsActive,
+            ref int CreatedByUserID)
         {
             bool isFound = false;
 
@@ -37,8 +36,6 @@ namespace DVLD_DataAccess
 
                 if (reader.Read())
                 {
-
-                    // The record was found
                     isFound = true;
                     ApplicationID = (int)reader["ApplicationID"];
                     DriverID = (int)reader["DriverID"];
@@ -46,21 +43,15 @@ namespace DVLD_DataAccess
                     IssueDate = (DateTime)reader["IssueDate"];
                     ExpirationDate = (DateTime)reader["ExpirationDate"];
 
-
                     IsActive = (bool)reader["IsActive"];
                     CreatedByUserID = (int)reader["DriverID"];
-
-
                 }
                 else
                 {
-                    // The record was not found
                     isFound = false;
                 }
 
                 reader.Close();
-
-
             }
             catch (Exception ex)
             {
@@ -137,10 +128,7 @@ namespace DVLD_DataAccess
                 }
 
                 reader.Close();
-
-
             }
-
             catch (Exception ex)
             {
                 // Console.WriteLine("Error: " + ex.Message);
@@ -151,39 +139,23 @@ namespace DVLD_DataAccess
             }
 
             return dt;
-
         }
 
-
-        public static int AddNewInternationalLicense(int ApplicationID,
-             int DriverID, int IssuedUsingLocalLicenseID,
+        public static int AddNewInternationalLicense(int ApplicationID, int DriverID, int IssuedUsingLocalLicenseID,
              DateTime IssueDate, DateTime ExpirationDate, bool IsActive, int CreatedByUserID)
         {
             int InternationalLicenseID = -1;
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = @"
-                               Update InternationalLicenses 
+            string query = @" Update InternationalLicenses 
                                set IsActive=0
                                where DriverID=@DriverID;
 
                              INSERT INTO InternationalLicenses
-                               (
-                                ApplicationID,
-                                DriverID,
-                                IssuedUsingLocalLicenseID,
-                                IssueDate,
-                                ExpirationDate,
-                                IsActive,
+                               (ApplicationID, DriverID, IssuedUsingLocalLicenseID, IssueDate, ExpirationDate, IsActive,
                                 CreatedByUserID)
-                         VALUES
-                               (@ApplicationID,
-                                @DriverID,
-                                @IssuedUsingLocalLicenseID,
-                                @IssueDate,
-                                @ExpirationDate,
-                                @IsActive,
+                             VALUES (@ApplicationID, @DriverID, @IssuedUsingLocalLicenseID, @IssueDate, @ExpirationDate, @IsActive,
                                 @CreatedByUserID);
                             SELECT SCOPE_IDENTITY();";
 
@@ -197,8 +169,6 @@ namespace DVLD_DataAccess
 
             command.Parameters.AddWithValue("@IsActive", IsActive);
             command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
-
-
 
             try
             {
@@ -223,17 +193,12 @@ namespace DVLD_DataAccess
                 connection.Close();
             }
 
-
             return InternationalLicenseID;
-
         }
 
-        public static bool UpdateInternationalLicense(
-              int InternationalLicenseID, int ApplicationID,
-             int DriverID, int IssuedUsingLocalLicenseID,
-             DateTime IssueDate, DateTime ExpirationDate, bool IsActive, int CreatedByUserID)
+        public static bool UpdateInternationalLicense(int InternationalLicenseID, int ApplicationID, int DriverID,
+            int IssuedUsingLocalLicenseID, DateTime IssueDate, DateTime ExpirationDate, bool IsActive, int CreatedByUserID)
         {
-
             int rowsAffected = 0;
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
@@ -307,19 +272,14 @@ namespace DVLD_DataAccess
                     InternationalLicenseID = insertedID;
                 }
             }
-
             catch (Exception ex)
             {
                 //Console.WriteLine("Error: " + ex.Message);
-
             }
-
             finally
             {
                 connection.Close();
             }
-
-
             return InternationalLicenseID;
         }
 
