@@ -9,10 +9,8 @@ namespace DVLD_Buisness
 {
     public class clsDetainedLicense
     {
-
         public enum enMode { AddNew = 0, Update = 1 };
         public enMode Mode = enMode.AddNew;
-
 
         public int DetainID { set; get; }
         public int LicenseID { set; get; }
@@ -69,8 +67,6 @@ namespace DVLD_Buisness
 
         private bool _AddNewDetainedLicense()
         {
-            //call DataAccess Layer 
-
             this.DetainID = clsDetainedLicenseData.AddNewDetainedLicense(
                 this.LicenseID, this.DetainDate, this.FineFees, this.CreatedByUserID);
 
@@ -79,8 +75,6 @@ namespace DVLD_Buisness
 
         private bool _UpdateDetainedLicense()
         {
-            //call DataAccess Layer 
-
             return clsDetainedLicenseData.UpdateDetainedLicense(
                 this.DetainID, this.LicenseID, this.DetainDate, this.FineFees, this.CreatedByUserID);
         }

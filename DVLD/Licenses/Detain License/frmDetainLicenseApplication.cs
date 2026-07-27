@@ -23,17 +23,23 @@ namespace DVLD.Licenses.Detain_License
 
         private void ctrlDriverLicenseInfoWithFilter1_OnLicenseSelected(int obj)
         {
-            int SelectedLicenseID = obj;
-            lblLicenseID.Text = SelectedLicenseID.ToString();
-            if (SelectedLicenseID == -1)
+            _SelectedLicenseID = obj;
+
+            lblLicenseID.Text = _SelectedLicenseID.ToString();
+            llShowLicenseHistory.Enabled = (_SelectedLicenseID != -1);
+
+            if (_SelectedLicenseID == -1)
             {
                 return;
             }
 
-            if(!ctrlDriverLicenseInfoWithFilter1.SelectedLicenseInfo.IsActive)
+            if (ctrlDriverLicenseInfoWithFilter1.SelectedLicenseInfo.IsDetained)
             {
-
+                MessageBox.Show("Selected License already detained, choose another one.", "Not allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
+
+            txtFineFees.Focus();
             btnDetain.Enabled = true;
         }
 
@@ -82,6 +88,31 @@ namespace DVLD.Licenses.Detain_License
         private void frmDetainLicenseApplication_Activated(object sender, EventArgs e)
         {
             ctrlDriverLicenseInfoWithFilter1.txtLicenseIDFocus();
+        }
+
+        private void txtFineFees_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtFineFees.Text.Trim()))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtFineFees, "Fees cannot be empty!");
+                return;
+            }
+            else
+            {
+                errorProvider1.SetError(txtFineFees, null);
+
+            }
+
+            if (!clsValidation.IsNumber(txtFineFees.Text))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtFineFees, "Invalid Number.");
+            }
+            else
+            {
+                errorProvider1.SetError(txtFineFees, null);
+            }
         }
     }
 }

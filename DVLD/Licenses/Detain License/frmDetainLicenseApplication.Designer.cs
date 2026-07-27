@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblTitle = new System.Windows.Forms.Label();
             this.ctrlDriverLicenseInfoWithFilter1 = new DVLD.Licenses.Local_Licenses.Controls.ctrlDriverLicenseInfoWithFilter();
             this.gpDetain = new System.Windows.Forms.GroupBox();
@@ -50,12 +51,14 @@
             this.llShowLicenseInfo = new System.Windows.Forms.LinkLabel();
             this.btnDetain = new System.Windows.Forms.Button();
             this.llShowLicenseHistory = new System.Windows.Forms.LinkLabel();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.gpDetain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -109,6 +112,7 @@
             this.txtFineFees.Name = "txtFineFees";
             this.txtFineFees.Size = new System.Drawing.Size(102, 22);
             this.txtFineFees.TabIndex = 196;
+            this.txtFineFees.Validating += new System.ComponentModel.CancelEventHandler(this.txtFineFees_Validating);
             // 
             // pictureBox8
             // 
@@ -266,10 +270,10 @@
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.Image = global::DVLD.Properties.Resources.Close_32;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(584, 649);
+            this.btnClose.Location = new System.Drawing.Point(551, 649);
             this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(126, 37);
+            this.btnClose.Size = new System.Drawing.Size(159, 37);
             this.btnClose.TabIndex = 185;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -279,7 +283,7 @@
             this.llShowLicenseInfo.AutoSize = true;
             this.llShowLicenseInfo.Enabled = false;
             this.llShowLicenseInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.llShowLicenseInfo.Location = new System.Drawing.Point(213, 655);
+            this.llShowLicenseInfo.Location = new System.Drawing.Point(249, 655);
             this.llShowLicenseInfo.Name = "llShowLicenseInfo";
             this.llShowLicenseInfo.Size = new System.Drawing.Size(182, 25);
             this.llShowLicenseInfo.TabIndex = 188;
@@ -296,7 +300,7 @@
             this.btnDetain.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDetain.Location = new System.Drawing.Point(717, 649);
             this.btnDetain.Name = "btnDetain";
-            this.btnDetain.Size = new System.Drawing.Size(126, 37);
+            this.btnDetain.Size = new System.Drawing.Size(182, 37);
             this.btnDetain.TabIndex = 186;
             this.btnDetain.Text = "Detain";
             this.btnDetain.UseVisualStyleBackColor = true;
@@ -314,6 +318,10 @@
             this.llShowLicenseHistory.TabStop = true;
             this.llShowLicenseHistory.Text = "Show Licenses History";
             this.llShowLicenseHistory.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llShowLicenseHistory_LinkClicked);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // frmDetainLicenseApplication
             // 
@@ -340,6 +348,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -369,5 +378,6 @@
         private System.Windows.Forms.LinkLabel llShowLicenseInfo;
         private System.Windows.Forms.Button btnDetain;
         private System.Windows.Forms.LinkLabel llShowLicenseHistory;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

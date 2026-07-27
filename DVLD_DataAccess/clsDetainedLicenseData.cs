@@ -324,6 +324,7 @@ namespace DVLD_DataAccess
             string query = @"UPDATE dbo.DetainedLicenses
                               SET IsReleased = 1, 
                               ReleaseDate = @ReleaseDate, 
+                              ReleasedByUserID = @ReleasedByUserID,
                               ReleaseApplicationID = @ReleaseApplicationID   
                               WHERE DetainID=@DetainID;";
 
@@ -344,7 +345,6 @@ namespace DVLD_DataAccess
                 //Console.WriteLine("Error: " + ex.Message);
                 return false;
             }
-
             finally
             {
                 connection.Close();
@@ -361,9 +361,7 @@ namespace DVLD_DataAccess
 
             string query = @"select IsDetained=1 
                             from detainedLicenses 
-                            where 
-                            LicenseID=@LicenseID 
-                            and IsReleased=0;";
+                            where LicenseID=@LicenseID and IsReleased=0;";
 
             SqlCommand command = new SqlCommand(query, connection);
 
@@ -384,19 +382,13 @@ namespace DVLD_DataAccess
             catch (Exception ex)
             {
                 //Console.WriteLine("Error: " + ex.Message);
-
             }
-
             finally
             {
                 connection.Close();
             }
 
-
             return IsDetained;
-            ;
-
         }
-
     }
 }
