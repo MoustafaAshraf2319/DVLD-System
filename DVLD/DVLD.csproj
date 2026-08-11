@@ -726,5 +726,23 @@
   <ItemGroup>
     <None Include="Resources\Release Detained License 64.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Login  Background.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Login  Background1.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Main Background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Main Background1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\8330992.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\83309921.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

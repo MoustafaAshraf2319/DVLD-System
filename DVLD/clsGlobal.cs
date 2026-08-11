@@ -6,78 +6,60 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Win32;
 
 namespace DVLD
 {
     internal static class clsGlobal
     {
         public static clsUser CurrentUser;
+        private const string RegistryKeyPath = @"HKEY_CURRENT_USER\Software\DVLD";
         public static bool RememberUsernameAndPassword(string Username, string Password)
         {
             try
             {
-                string currentDirectory = System.IO.Directory.GetCurrentDirectory();
-
-                string filePath = currentDirectory + "\\data.txt";
-
-                if (Username == "" && File.Exists(filePath))
+                if (Username == "")
                 {
-                    File.Delete(filePath);
+                    Registry.SetValue(RegistryKeyPath, "Username", "");
+                    Registry.SetValue(RegistryKeyPath, "Password", "");
                     return true;
                 }
 
-                string dataToSave = Username + "#//#" + Password;
-
-                using (StreamWriter writer = new StreamWriter(filePath))
-                {
-                    writer.WriteLine(dataToSave);
-
-                    return true;
-                }
+                Registry.SetValue(RegistryKeyPath, "Username", Username);
+                Registry.SetValue(RegistryKeyPath, "Password", Password);
+                
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"An error occurred: {ex.Message}");
                 return false;
             }
-
+            return true;
         }
 
         public static bool GetStoredCredential(ref string Username, ref string Password)
         {
             try
             {
-                string currentDirectory = System.IO.Directory.GetCurrentDirectory();
 
-                string filePath = currentDirectory + "\\data.txt";
 
-                if (File.Exists(filePath))
-                {
-                    using (StreamReader reader = new StreamReader(filePath))
-                    {
-                        string line;
-                        while ((line = reader.ReadLine()) != null)
-                        {
-                            Console.WriteLine(line); // Output each line of data to the console
-                            string[] result = line.Split(new string[] { "#//#" }, StringSplitOptions.None);
+                object storedUsername = Registry.GetValue(RegistryKeyPath, "Username", null);
+                object storedPassword = Registry.GetValue(RegistryKeyPath, "Password", null);
 
-                            Username = result[0];
-                            Password = result[1];
-                        }
-                        return true;
-                    }
-                }
-                else
-                {
+                if (storedUsername == null || storedPassword == null || storedUsername.ToString() == "")
                     return false;
-                }
+
+                Username = storedUsername.ToString();
+                Password = storedPassword.ToString();
+
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"An error occurred: {ex.Message}");
                 return false;
             }
-
+            return true;
         }
     }
 }

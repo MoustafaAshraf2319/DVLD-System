@@ -243,7 +243,7 @@ namespace DVLD_DataAccess
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = @"SELECT Users.UserID, Users.PersonID, FullName = People.FirstName + ' ' + People.SecondName + ' ' +
-            ISNULL( People.ThirdName,'') + ' ' + People.LastName, Users.UserName, Users.Password, Users.IsActive
+            ISNULL( People.ThirdName,'') + ' ' + People.LastName, Users.UserName, Users.IsActive
             From Users Inner join People On Users.PersonID = People.PersonID";
 
             SqlCommand command = new SqlCommand(query, connection);
