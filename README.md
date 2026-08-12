@@ -27,7 +27,7 @@ The project follows a **3-Tier Architecture** and applies **Object-Oriented Prog
 ![Written Test](screenshots/written-test.png)
 
 ### Take Test
-![Take Test](Screenshots/take-test.png)
+![Take Test](screenshots/take-test.png)
 
 ### Replace License
 ![Replace License](screenshots/replacement.png)
