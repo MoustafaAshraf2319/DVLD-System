@@ -1,14 +1,46 @@
 # DVLD - Driving & Vehicle License Department System
 
-A desktop application built with **C# WinForms**, **ADO.NET**, and **SQL Server** that simulates a real Driving & Vehicle License Department system.
+A desktop application built with **C# WinForms**, **ADO.NET**, and **SQL Server** that simulates a real-world Driving & Vehicle License Department system.
 
-The project follows a **3-Tier Architecture** and focuses on writing clean, maintainable code while applying Object-Oriented Programming principles.
-
-> 🚧 This project is currently under active development.
+The project follows a **3-Tier Architecture** and applies **Object-Oriented Programming** principles to build clean, maintainable, and reusable code.
 
 ---
 
-## Tech Stack
+## 📸 Screenshots
+
+### Login
+![Login](screenshots/login.png)
+
+### Dashboard
+![Dashboard](screenshots/dashboard.png)
+
+### People Management
+![People Management](screenshots/people.png)
+
+### Applications Management
+![Applications](screenshots/applications.png)
+
+### New Local Driving License
+![New Local Driving License](screenshots/new-local-driving-license-application.png)
+
+### Written Test & Scheduling
+![Written Test](screenshots/written-test.png)
+
+### Take Test
+![Take Test](Screenshots/take-test.png)
+
+### Replace License
+![Replace License](screenshots/replacement.png)
+
+### Detain License
+![Detain License](screenshots/detain.png)
+
+### Detained Licenses
+![Detained Licenses](screenshots/Detained-Licenses.png)
+
+---
+
+## 🛠️ Tech Stack
 
 - C#
 - .NET Framework
@@ -20,95 +52,88 @@ The project follows a **3-Tier Architecture** and focuses on writing clean, main
 
 ---
 
-## Architecture
+## 🏗️ Architecture
 
-Presentation Layer
+The application follows a **3-Tier Architecture**:
 
-↓
-
-Business Layer
-
-↓
-
-Data Access Layer
-
-↓
-
-SQL Server Database
+**Presentation Layer**  
+↓  
+**Business Logic Layer**  
+↓  
+**Data Access Layer**  
+↓  
+**SQL Server Database**
 
 ---
 
-## Implemented Features
+## 🚀 Implemented Features
 
-### Authentication
+### Authentication & User Management
+
 - Login System
 - Remember Me functionality
 - Current User Management
+- User Management
+- User Activation / Deactivation
+- Change Password
+- User Search & Filtering
 
-### People Management
-- Add Person
-- Update Person
-- Delete Person
-- Search & Filter
+### People & Driver Management
+
+- Add, Update, and Delete People
 - View Person Details
-- Image Upload
+- Driver Management
+- Search & Filtering
+- Image Upload and Management
 - Input Validation
 
-### User Management
-- Add User
-- Update User
-- Delete User
-- Activate / Deactivate Users
-- Change Password
-- Search & Filter
-
----
-
-## In Progress
+### Applications & Licensing
 
 - Local Driving License Applications
-- Tests Management
-- Drivers Management
-- Licenses Management
-- Detained Licenses
-- International Licenses
+- International License Applications
+- License Issuance
+- License Renewal
+- License Replacement
+- Lost & Damaged License Replacement
+- License Detention
+- License Release
+- License History
+
+### Driving Tests
+
+- Test Scheduling
+- Vision Test
+- Take Test
+- Test Results Management
+- Re-test / Retake Workflow
 
 ---
 
-## Concepts Practiced
+## 💡 Concepts Practiced
 
-- OOP
-- SOLID Principles (where applicable)
+- Object-Oriented Programming (OOP)
 - 3-Tier Architecture
+- SOLID Principles
 - Data Validation
 - Exception Handling
 - CRUD Operations
 - Authentication & Authorization
 - File Handling
 - SQL Views
-- Stored Business Logic
+- Stored Procedures
+- Business Logic Implementation
+- Reusable Components
+- Search & Filtering
 
 ---
 
-## Screenshots
+## 📂 Project Structure
 
-Screenshots will be added as the project progresses.
-
----
-
-## Future Improvements
-
-- Entity Framework Core version
-- REST API version
-- ASP.NET Core MVC/Web API version
-- Unit Testing
-- Logging
-- Dependency Injection
-
----
-
-## Status
-
-🚧 Work in Progress
-
-This project is being developed as part of my journey to master desktop application development using .NET technologies.
+```text
+Presentation Layer
+        ↓
+Business Logic Layer
+        ↓
+Data Access Layer
+        ↓
+SQL Server Database
