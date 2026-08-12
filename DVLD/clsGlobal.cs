@@ -40,9 +40,7 @@ namespace DVLD
         public static bool GetStoredCredential(ref string Username, ref string Password)
         {
             try
-            {
-
-
+            { 
                 object storedUsername = Registry.GetValue(RegistryKeyPath, "Username", null);
                 object storedPassword = Registry.GetValue(RegistryKeyPath, "Password", null);
 
@@ -51,8 +49,6 @@ namespace DVLD
 
                 Username = storedUsername.ToString();
                 Password = storedPassword.ToString();
-
-
             }
             catch (Exception ex)
             {

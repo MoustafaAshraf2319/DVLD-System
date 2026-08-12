@@ -15,41 +15,33 @@ namespace DVLD_DataAccess
         {
             bool isFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
             string query = "SELECT * FROM ApplicationTypes WHERE ApplicationTypeID = @ApplicationTypeID";
-
-            SqlCommand command = new SqlCommand(query, connection);
-
-            command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
 
             try
             {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-
-                if (reader.Read())
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    isFound = true;
+                    command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
 
-                    ApplicationTypeTitle = (string)reader["ApplicationTypeTitle"];
-                    ApplicationFees = Convert.ToSingle(reader["ApplicationFees"]);
-                }
-                else
-                {
-                    isFound = false;
-                }
+                    connection.Open();
 
-                reader.Close();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            isFound = true;
+
+                            ApplicationTypeTitle = (string)reader["ApplicationTypeTitle"];
+                            ApplicationFees = Convert.ToSingle(reader["ApplicationFees"]);
+                        }
+                    }
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error: " + ex.Message);
                 isFound = false;
-            }
-            finally
-            {
-                connection.Close();
             }
 
             return isFound;
@@ -58,33 +50,28 @@ namespace DVLD_DataAccess
         public static DataTable GetAllApplicationTypes()
         {
             DataTable dt = new DataTable();
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = "SELECT * FROM ApplicationTypes order by ApplicationTypeTitle";
-
-            SqlCommand command = new SqlCommand(query, connection);
+            string query = "SELECT * FROM ApplicationTypes ORDER BY ApplicationTypeTitle";
 
             try
             {
-                connection.Open();
-
-                SqlDataReader reader = command.ExecuteReader();
-
-                if (reader.HasRows)
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    dt.Load(reader);
+                    connection.Open();
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            dt.Load(reader);
+                        }
+                    }
                 }
-
-                reader.Close();
             }
-
             catch (Exception ex)
             {
                 Console.WriteLine("Error: " + ex.Message);
-            }
-            finally
-            {
-                connection.Close();
             }
 
             return dt;
@@ -94,37 +81,31 @@ namespace DVLD_DataAccess
         {
             int ApplicationTypeID = -1;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = @"Insert Into ApplicationTypes (ApplicationTypeTitle,ApplicationFees)
-                            Values (@Title,@Fees)
-                            SELECT SCOPE_IDENTITY();";
-
-            SqlCommand command = new SqlCommand(query, connection);
-
-            command.Parameters.AddWithValue("@ApplicationTypeTitle", Title);
-            command.Parameters.AddWithValue("@ApplicationFees", Fees);
+            string query = @"INSERT INTO ApplicationTypes (ApplicationTypeTitle, ApplicationFees)
+                             VALUES (@Title, @Fees);
+                             SELECT SCOPE_IDENTITY();";
 
             try
             {
-                connection.Open();
-
-                object result = command.ExecuteScalar();
-
-                if (result != null && int.TryParse(result.ToString(), out int insertedID))
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    ApplicationTypeID = insertedID;
+                    command.Parameters.AddWithValue("@Title", Title);
+                    command.Parameters.AddWithValue("@Fees", Fees);
+
+                    connection.Open();
+
+                    object result = command.ExecuteScalar();
+
+                    if (result != null && int.TryParse(result.ToString(), out int insertedID))
+                    {
+                        ApplicationTypeID = insertedID;
+                    }
                 }
             }
-
             catch (Exception ex)
             {
                 Console.WriteLine("Error: " + ex.Message);
-            }
-
-            finally
-            {
-                connection.Close();
             }
 
             return ApplicationTypeID;
@@ -133,22 +114,23 @@ namespace DVLD_DataAccess
         public static bool UpdateApplicationType(int ApplicationTypeID, string Title, float Fees)
         {
             int rowsAffected = 0;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = @"Update ApplicationTypes  
-                            set ApplicationTypeTitle = @Title, ApplicationFees = @Fees
-                            where ApplicationTypeID = @ApplicationTypeID";
-
-            SqlCommand command = new SqlCommand(query, connection);
-
-            command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
-            command.Parameters.AddWithValue("@Title", Title);
-            command.Parameters.AddWithValue("@Fees", Fees);
+            string query = @"UPDATE ApplicationTypes  
+                             SET ApplicationTypeTitle = @Title, ApplicationFees = @Fees
+                             WHERE ApplicationTypeID = @ApplicationTypeID";
 
             try
             {
-                connection.Open();
-                rowsAffected = command.ExecuteNonQuery();
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
+                    command.Parameters.AddWithValue("@Title", Title);
+                    command.Parameters.AddWithValue("@Fees", Fees);
+
+                    connection.Open();
+                    rowsAffected = command.ExecuteNonQuery();
+                }
             }
             catch (Exception ex)
             {
@@ -156,13 +138,7 @@ namespace DVLD_DataAccess
                 return false;
             }
 
-            finally
-            {
-                connection.Close();
-            }
-
             return (rowsAffected > 0);
         }
-
     }
 }
