@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.lblTitle = new System.Windows.Forms.Label();
-            this.ctrlDriverLicenseInfoWithFilter1 = new DVLD.Licenses.Local_Licenses.Controls.ctrlDriverLicenseInfoWithFilter();
             this.gbReplacementFor = new System.Windows.Forms.GroupBox();
             this.rbLostLicense = new System.Windows.Forms.RadioButton();
             this.rbDamagedLicense = new System.Windows.Forms.RadioButton();
@@ -56,6 +55,7 @@
             this.llShowLicenseHistory = new System.Windows.Forms.LinkLabel();
             this.btnIssueReplacement = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.ctrlDriverLicenseInfoWithFilter1 = new DVLD.Licenses.Local_Licenses.Controls.ctrlDriverLicenseInfoWithFilter();
             this.gbReplacementFor.SuspendLayout();
             this.gpApplicationInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
@@ -70,29 +70,19 @@
             // 
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblTitle.Location = new System.Drawing.Point(114, -1);
+            this.lblTitle.Location = new System.Drawing.Point(-5, -1);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(875, 43);
             this.lblTitle.TabIndex = 184;
             this.lblTitle.Text = "License Replacement";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // ctrlDriverLicenseInfoWithFilter1
-            // 
-            this.ctrlDriverLicenseInfoWithFilter1.BackColor = System.Drawing.Color.White;
-            this.ctrlDriverLicenseInfoWithFilter1.FilterEnabled = true;
-            this.ctrlDriverLicenseInfoWithFilter1.Location = new System.Drawing.Point(3, 45);
-            this.ctrlDriverLicenseInfoWithFilter1.Name = "ctrlDriverLicenseInfoWithFilter1";
-            this.ctrlDriverLicenseInfoWithFilter1.Size = new System.Drawing.Size(1054, 467);
-            this.ctrlDriverLicenseInfoWithFilter1.TabIndex = 193;
-            this.ctrlDriverLicenseInfoWithFilter1.OnLicenseSelected += new System.Action<int>(this.ctrlDriverLicenseInfoWithFilter1_OnLicenseSelected);
-            // 
             // gbReplacementFor
             // 
             this.gbReplacementFor.Controls.Add(this.rbLostLicense);
             this.gbReplacementFor.Controls.Add(this.rbDamagedLicense);
             this.gbReplacementFor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbReplacementFor.Location = new System.Drawing.Point(547, 45);
+            this.gbReplacementFor.Location = new System.Drawing.Point(554, 35);
             this.gbReplacementFor.Name = "gbReplacementFor";
             this.gbReplacementFor.Size = new System.Drawing.Size(237, 94);
             this.gbReplacementFor.TabIndex = 194;
@@ -373,9 +363,9 @@
             this.btnIssueReplacement.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIssueReplacement.Image = global::DVLD.Properties.Resources.Renew_Driving_License_32;
             this.btnIssueReplacement.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnIssueReplacement.Location = new System.Drawing.Point(846, 650);
+            this.btnIssueReplacement.Location = new System.Drawing.Point(626, 656);
             this.btnIssueReplacement.Name = "btnIssueReplacement";
-            this.btnIssueReplacement.Size = new System.Drawing.Size(204, 37);
+            this.btnIssueReplacement.Size = new System.Drawing.Size(203, 37);
             this.btnIssueReplacement.TabIndex = 197;
             this.btnIssueReplacement.Text = "Issue Replacement";
             this.btnIssueReplacement.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -389,20 +379,30 @@
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.Image = global::DVLD.Properties.Resources.Close_32;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(671, 650);
+            this.btnClose.Location = new System.Drawing.Point(493, 656);
             this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(153, 37);
+            this.btnClose.Size = new System.Drawing.Size(126, 37);
             this.btnClose.TabIndex = 196;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            // 
+            // ctrlDriverLicenseInfoWithFilter1
+            // 
+            this.ctrlDriverLicenseInfoWithFilter1.BackColor = System.Drawing.Color.White;
+            this.ctrlDriverLicenseInfoWithFilter1.FilterEnabled = true;
+            this.ctrlDriverLicenseInfoWithFilter1.Location = new System.Drawing.Point(3, 45);
+            this.ctrlDriverLicenseInfoWithFilter1.Name = "ctrlDriverLicenseInfoWithFilter1";
+            this.ctrlDriverLicenseInfoWithFilter1.Size = new System.Drawing.Size(1054, 467);
+            this.ctrlDriverLicenseInfoWithFilter1.TabIndex = 193;
+            this.ctrlDriverLicenseInfoWithFilter1.OnLicenseSelected += new System.Action<int>(this.ctrlDriverLicenseInfoWithFilter1_OnLicenseSelected);
             // 
             // frmReplaceLostOrDamagedLicenseApplication
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1162, 700);
+            this.ClientSize = new System.Drawing.Size(841, 700);
             this.Controls.Add(this.llShowLicenseInfo);
             this.Controls.Add(this.llShowLicenseHistory);
             this.Controls.Add(this.btnIssueReplacement);

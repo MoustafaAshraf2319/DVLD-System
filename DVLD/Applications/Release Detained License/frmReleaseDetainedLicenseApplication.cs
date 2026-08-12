@@ -73,7 +73,7 @@ namespace DVLD.Applications.Release_Detained_License
 
             if (!ctrlDriverLicenseInfoWithFilter1.SelectedLicenseInfo.IsDetained)
             {
-                MessageBox.Show("Selected License i is not detained, choose another one.", "Not allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Selected License id is not detained, choose another one.", "Not allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             lblApplicationFees.Text = clsApplicationType.Find((int)clsApplication.enApplicationType.ReleaseDetainedDrivingLicense).Fees.ToString();

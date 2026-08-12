@@ -162,5 +162,12 @@ namespace DVLD.Applications.International_License
             frmShowPersonLicenseHistory frm = new frmShowPersonLicenseHistory(PersonID);
             frm.ShowDialog();
         }
+
+        private void btnNewApplication_Click(object sender, EventArgs e)
+        {
+            frmNewInternationalLicenseApplication frm = new frmNewInternationalLicenseApplication();
+            frm.ShowDialog();
+            frmListInternationalLicensesApplications_Load(null,null);
+        }
     }
 }
