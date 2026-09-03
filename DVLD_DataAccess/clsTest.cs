@@ -36,8 +36,9 @@ namespace DVLD_DataAccess
                             }
                         }
                     }
-                    catch
+                    catch(Exception ex)
                     {
+                        clsEventLog.LogException(ex);
                         isFound = false;
                     }
                 }
@@ -87,8 +88,9 @@ namespace DVLD_DataAccess
                             }
                         }
                     }
-                    catch
+                    catch(Exception ex)
                     {
+                        clsEventLog.LogException(ex);
                         isFound = false;
                     }
                 }
@@ -118,8 +120,9 @@ namespace DVLD_DataAccess
                             }
                         }
                     }
-                    catch
+                    catch(Exception ex)
                     {
+                        clsEventLog.LogException(ex);
                     }
                 }
             }
@@ -164,8 +167,9 @@ namespace DVLD_DataAccess
                             TestID = insertedID;
                         }
                     }
-                    catch
+                    catch(Exception ex)
                     {
+                        clsEventLog.LogException(ex);
                     }
                 }
             }
@@ -205,8 +209,9 @@ namespace DVLD_DataAccess
                         connection.Open();
                         rowsAffected = command.ExecuteNonQuery();
                     }
-                    catch
+                    catch(Exception ex)
                     {
+                        clsEventLog.LogException(ex);
                         return false;
                     }
                 }
@@ -240,8 +245,9 @@ namespace DVLD_DataAccess
                             passedTestCount = ptCount;
                         }
                     }
-                    catch
+                    catch(Exception ex)
                     {
+                        clsEventLog.LogException(ex);
                     }
                 }
             }

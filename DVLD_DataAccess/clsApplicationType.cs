@@ -40,7 +40,7 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error: " + ex.Message);
+                clsEventLog.LogException(ex);
                 isFound = false;
             }
 
@@ -71,7 +71,7 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error: " + ex.Message);
+                clsEventLog.LogException(ex);
             }
 
             return dt;
@@ -105,7 +105,7 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error: " + ex.Message);
+                clsEventLog.LogException(ex);
             }
 
             return ApplicationTypeID;
@@ -134,7 +134,7 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error: " + ex.Message);
+                clsEventLog.LogException(ex);
                 return false;
             }
 

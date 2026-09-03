@@ -57,6 +57,7 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
+                clsEventLog.LogException(ex);
                 isFound = false;
             }
 
@@ -109,6 +110,7 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
+                clsEventLog.LogException(ex);
                 isFound = false;
             }
 
@@ -138,7 +140,7 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                // Log exception
+                clsEventLog.LogException(ex);
             }
 
             return dt;
@@ -173,7 +175,7 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                
+                clsEventLog.LogException(ex);
             }
 
             return DetainID;
@@ -209,6 +211,7 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
+                clsEventLog.LogException(ex);
                 return false;
             }
 
@@ -243,6 +246,7 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
+                clsEventLog.LogException(ex);
                 return false;
             }
 
@@ -275,7 +279,7 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                
+                clsEventLog.LogException(ex);
             }
 
             return isDetained;

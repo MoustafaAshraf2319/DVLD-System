@@ -37,6 +37,7 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
+                clsEventLog.LogException(ex);
                 isFound = false;
             }
 
@@ -70,6 +71,7 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
+                clsEventLog.LogException(ex);
                 isFound = false;
             }
 
@@ -100,7 +102,7 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                // Log exception
+                clsEventLog.LogException(ex);
             }
 
             return dt;

@@ -34,6 +34,7 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
+                clsEventLog.LogException(ex);
                 isFound = false;
             }
 
@@ -68,6 +69,7 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
+                clsEventLog.LogException(ex);
                 isFound = false;
             }
 
@@ -97,7 +99,7 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                
+                clsEventLog.LogException(ex);
             }
 
             return dt;
@@ -130,7 +132,7 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                
+                clsEventLog.LogException(ex);
             }
 
             return LocalDrivingLicenseApplicationID;
@@ -161,6 +163,7 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
+                clsEventLog.LogException(ex);
                 return false;
             }
 
@@ -187,6 +190,7 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
+                clsEventLog.LogException(ex);
                 return false;
             }
 
@@ -224,7 +228,7 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                
+                clsEventLog.LogException(ex);
             }
 
             return Result;
@@ -261,7 +265,7 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                
+                clsEventLog.LogException(ex);
             }
 
             return IsFound;
@@ -297,7 +301,7 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                
+                clsEventLog.LogException(ex);
             }
 
             return TotalTrialsPerTest;
@@ -334,7 +338,7 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                
+                clsEventLog.LogException(ex);
             }
 
             return Result;
