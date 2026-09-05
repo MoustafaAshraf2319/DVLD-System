@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
-namespace DVLD.Classes
+namespace DVLD_Business
 {
-    public class clsUtil
+    public static class clsUtil
     {
         public static string GenerateGUID()
         {
@@ -36,7 +35,7 @@ namespace DVLD.Classes
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error creating folder: " + ex.Message);
+ 
                     return false;
                 }
             }
@@ -57,8 +56,8 @@ namespace DVLD.Classes
 
         public static bool CopyImageToProjectImagesFolder(ref string sourceFile)
         {
-            // this funciton will copy the image to the
-            // project images foldr after renaming it
+            // this function will copy the image to the
+            // project images folder after renaming it
             // with GUID with the same extention, then it will update the sourceFileName with the new name.
 
             string DestinationFolder = @"C:\DVLD-People-Images\";
@@ -75,12 +74,21 @@ namespace DVLD.Classes
             }
             catch (IOException iox)
             {
-                MessageBox.Show(iox.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show(iox.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
             sourceFile = destinationFile;
             return true;
+        }
+
+        public static string ComputeHash(string input)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] hashBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(input));
+                return BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
+            }
         }
     }
 }

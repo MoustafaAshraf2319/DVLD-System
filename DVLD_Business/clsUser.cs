@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -73,30 +74,31 @@ namespace DVLD_Business
         }
         public static clsUser FindByUsernameAndPassword(string UserName, string Password)
         {
+            string HashedPassword = clsUtil.ComputeHash(Password);
             int UserID = -1;
             int PersonID = -1;
 
             bool IsActive = false;
 
-            bool IsFound = clsUserData.GetUserInfoByUsernameAndPassword
-                                (UserName, Password, ref UserID, ref PersonID, ref IsActive);
+            bool IsFound = clsUserData.GetUserInfoByUsernameAndPassword(UserName, HashedPassword, ref UserID, ref PersonID, ref IsActive);
 
             if (IsFound)
                 //we return new object of that User with the right data
-                return new clsUser(UserID, PersonID, UserName, Password, IsActive);
+                return new clsUser(UserID, PersonID, UserName, HashedPassword, IsActive);
             else
                 return null;
         }
 
         private bool _AddNewUser()
-        {           
+        {
+            this.Password = clsUtil.ComputeHash(this.Password);
             this.UserID = clsUserData.AddNewUser(this.PersonID, this.UserName, this.Password, this.IsActive);
             return (this.UserID != -1);
         }
 
         private bool _UpdateUser()
         {
-            return clsUserData.UpdateUser(this.UserID, this.PersonID, this.UserName, this.Password, this.IsActive);
+            return clsUserData.UpdateUser(this.UserID, this.PersonID, this.UserName, this.IsActive);
         }
 
         public bool Save()
@@ -140,6 +142,17 @@ namespace DVLD_Business
         public static bool isUserExistForPersonID(int PersonID)
         {
             return clsUserData.IsUserExistForPersonID(PersonID);
+        }
+
+        public static bool ChangePassword(int UserID, string NewPassword)
+        {
+            string hashedPassword = clsUtil.ComputeHash(NewPassword);
+            return clsUserData.ChangePassword(UserID, hashedPassword);
+        }
+
+        public bool IsPasswordCorrect(string Password)
+        {
+            return clsUtil.ComputeHash(Password) == this.Password;
         }
 
     }

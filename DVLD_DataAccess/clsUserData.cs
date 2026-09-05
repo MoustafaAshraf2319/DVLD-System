@@ -166,14 +166,13 @@ namespace DVLD_DataAccess
             return UserID;
         }
 
-        public static bool UpdateUser(int UserID, int PersonID, string UserName, string Password, bool IsActive)
+        public static bool UpdateUser(int UserID, int PersonID, string UserName, bool IsActive)
         {
             int rowsAffected = 0;
 
             string query = @"UPDATE Users 
                              SET PersonID = @PersonID,
                                  UserName = @UserName, 
-                                 Password = @Password, 
                                  IsActive = @IsActive 
                              WHERE UserID = @UserID";
 
@@ -184,7 +183,6 @@ namespace DVLD_DataAccess
                     command.Parameters.AddWithValue("@UserID", UserID);
                     command.Parameters.AddWithValue("@PersonID", PersonID);
                     command.Parameters.AddWithValue("@UserName", UserName);
-                    command.Parameters.AddWithValue("@Password", Password);
                     command.Parameters.AddWithValue("@IsActive", IsActive);
 
                     try

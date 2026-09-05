@@ -1,4 +1,5 @@
-﻿using DVLD_Business;
+﻿using DVLD.Classes;
+using DVLD_Business;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -75,8 +76,6 @@ namespace DVLD
             ctrlPersonCardWithFilter1.LoadPersonInfo(_User.PersonID);
             lblUserID.Text = _User.UserID.ToString();
             txtUserName.Text = _User.UserName;
-            txtPassword.Text = _User.Password;
-            txtConfirmPassword.Text = _User.Password;
             chkIsActive.Checked = _User.IsActive;
         }
 
@@ -121,20 +120,35 @@ namespace DVLD
             }
 
             _User.UserName = txtUserName.Text.Trim();
-            _User.Password = txtPassword.Text.Trim();
             _User.IsActive = chkIsActive.Checked;
             _User.PersonID = ctrlPersonCardWithFilter1.PersonID;
 
-            if(_User.Save())
+            bool isPasswordChanged = _Mode == enMode.Update && _User.IsPasswordCorrect(txtPassword.Text.Trim());
+
+            if (_Mode == enMode.AddNew)
+                _User.Password = txtPassword.Text.Trim(); 
+
+            if (!_User.Save())
             {
-                lblUserID.Text = _User.UserID.ToString();
-                _Mode = enMode.Update;
-                lblTitle.Text = "Update User";
-                this.Text = "Update User";
-                MessageBox.Show("Data Saved Successfully", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
                 MessageBox.Show("Error: Data Is not Saved Successfully.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (isPasswordChanged)
+            {
+                if (!clsUser.ChangePassword(_User.UserID, txtPassword.Text.Trim()))
+                {
+                    MessageBox.Show("Warning: Other data was saved, but the password was not updated.",
+                        "Partial Save", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+
+            lblUserID.Text = _User.UserID.ToString();
+            _Mode = enMode.Update;
+            lblTitle.Text = "Update User";
+            this.Text = "Update User";
+            MessageBox.Show("Data Saved Successfully", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void txtUserName_Validating(object sender, CancelEventArgs e)

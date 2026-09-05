@@ -1,4 +1,5 @@
-﻿using DVLD_Business;
+﻿using DVLD.Classes;
+using DVLD_Business;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -52,9 +53,9 @@ namespace DVLD
                     MessageBoxIcon.Information);
                 return;
             }
-            _User.Password = txtNewPassword.Text;
+            _User.Password = txtNewPassword.Text.Trim();
 
-            if(_User.Save())
+            if (_User.Save())
             {
                 MessageBox.Show("Password Changed successfully","Saved",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 _ResetDefaultValue();
